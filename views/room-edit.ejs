@@ -1,0 +1,133 @@
+<% include ./Partial//header %>
+
+<div class="container">
+   <form class="my-5" action="/room/<%=room._id%>?_method=PUT" method="POST" enctype="multipart/form-data">
+      <div class="row">
+         <div class="form-group col">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" class="form-control" value='<%=room.name%>'>
+         </div>
+         <div class="form-group col">
+            <label for="slug">Slug</label>
+            <input type="text" name="slug" id="slug" class="form-control" value='<%=room.slug%>'
+               aria-describedby="helpId">
+         </div>
+      </div>
+      <div class="row">
+         <div class="form-group col-6">
+            <label for="roomType">Type</label>
+            <select class="form-control" name="type" id="roomType">
+               <% let values = ['Presidential', 'Family', 'Double', 'Single'] %>
+               <% values.forEach( val => { %>
+               <% let select = val.toLowerCase() === room.type ? 'selected' : null %>
+               <option value='<%= val.toLowerCase() %>' <%=select%>><%=val%></option>
+               <%})%>
+            </select>
+         </div>
+      </div>
+      <div class="row">
+         <div class="form-group col">
+            <label for="roomPrice">Price</label>
+            <input type="number" name="price" class="form-control" value="<%=room.price%>" min="0">
+         </div>
+         <div class="form-group col">
+            <label for="roomSize">Size</label>
+            <input type="number" name="size" class="form-control" value="<%=room.size%>" min="0">
+         </div>
+         <div class="form-group col">
+            <label for="Capacity">Capacity</label>
+            <input type="number" name="capacity" id="Capacity" class="form-control" value="<%=room.capacity%>" min="0">
+         </div>
+      </div>
+      <div class="row">
+         <div class="form-group col">
+            <p class="form-check-inline">Pets: </p>
+            <div class="form-check form-check-inline">
+               <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="pets" <%= room.pets? 'checked' : null %>
+                     value=true>Yes
+               </label>
+            </div>
+            <div class="form-check form-check-inline">
+               <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="pets" <%= !room.pets? 'checked' : null %>
+                     value=false>
+                  No
+               </label>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="form-group col">
+            <p class="form-check-inline">Breakfast: </p>
+            <div class="form-check form-check-inline">
+               <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="breakfast" <%= room.breakfast ? "checked": null %>
+                     value=true> Yes
+               </label>
+            </div>
+            <div class="form-check form-check-inline">
+               <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="breakfast" <%= !room.breakfast ? "checked": null %>
+                     value=false> No
+               </label>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="form-group col">
+            <p class="form-check-inline">Featured: </p>
+            <div class="form-check form-check-inline">
+               <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="featured" <%= room.featured ? "checked": null %>
+                     value=true> Yes
+               </label>
+            </div>
+            <div class="form-check form-check-inline">
+               <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="featured" <%= !room.featured ? "checked": null %>
+                     value=false> No
+               </label>
+            </div>
+         </div>
+      </div>
+      <div class="form-group">
+         <label for="exampleFormControlTextarea1">Description:</label>
+         <textarea class="form-control" name="description" rows="3"><%= room.description %></textarea>
+      </div>
+      <div class="form-row">
+         <div class="col-md-6" id="extra">
+            <label for="extra">Extra</label>
+            <% room.extras.forEach(extra => { %>
+            <div class="input-group" id="extraInput">
+               <input type="text" name="extras" class="form-control" value="<%=extra%>">
+               <div class="input-group-append">
+                  <span class="input-group-text delete-addon"><i class="fas fa-trash"></i></span>
+               </div>
+            </div>
+            <% })%>
+            <div class="input-group" id="extraInput">
+               <input type="text" name="extras" class="form-control">
+               <div class="input-group-append">
+                  <span class="input-group-text" id="basic-addon2"><i class="fas fa-plus" id="add"></i></span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="form-row mt-3">
+         <div class="form-group col-6 col-md-4">
+            <div class="custom-file">
+               <input type="file" name="images" class="custom-file-input" id="customFile" multiple accept="image/*">
+               <label class="custom-file-label" for="customFile">Room Images</label>
+            </div>
+         </div>
+      </div>
+      <div class="row image"></div>
+
+      <button type="submit" class="btn btn-primary">Save</button>
+   </form>
+</div>
+
+
+<script src="/javascripts/room_post.js"></script>
+<% include ./Partial//footer %>

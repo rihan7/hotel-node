@@ -1,0 +1,21 @@
+body {
+  box-sizing: border-box;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: black
+}
+
+
+.center {
+  width: 100%;
+  height: calc(100vh - 49px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown-menu {
+right: 0;
+}

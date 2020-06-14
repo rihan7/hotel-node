@@ -1,0 +1,31 @@
+<% include ../Partial/header %>
+
+<div class="container-fluid">
+  <div class="row justify-content-sm-center justify-content-md-center mt-5 ">
+    <div class="col-sm-6 col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title text-center">Sign Up</h5>
+          <form method="POST" action="/users/signup">
+            <div class="form-group">
+              <input type="email" name="username" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" class="form-control" id="inputAddress" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
+          </form>
+          <p class="text-center mt-5">Have already an account ?
+            <span class="font-weight-bold">
+              <a href="/users/signin">Sign In
+                here
+              </a>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include ../Partial/footer %>

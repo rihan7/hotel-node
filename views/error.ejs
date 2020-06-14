@@ -1,0 +1,15 @@
+<% include ./partial/header %>
+
+<div class="center">
+   <div class="col-8 col-sm-6 col-md-6">
+      <div class="card text-center shadow">
+         <div class="card-body">
+            <h3 class="card-title"><%= error.statusCode %></h3>
+            <p class="card-text"><%= message %></p>
+            <a href="<%=url%>" class="btn btn-primary">Go back</a>
+         </div>
+      </div>
+   </div>
+</div>
+
+<% include ./partial/footer %>
